@@ -1,12 +1,12 @@
 name: EZPing
-version: 1.0.0
+version: 1.2.0
 main: EZPing\main
 api: 3.0.0
-description: Plugin that can show your ping by using //ping.
+description: Plugin that can show your ping by using /ping.
 author: Xenophilicy
 commands:
- /ping:
-  description: Used to get your ping!
+ ping:
+  description: Used to show your ping!
   permission: ezping.ping
  ezping:
   description: Find info about EZPing by Xenophilicy!
