@@ -1,79 +1,77 @@
 <?php
-/*
 # MADE BY:
-# __    __                                          __        __  __  __                     
-#/  |  /  |                                        /  |      /  |/  |/  |                    
-#$$ |  $$ |  ______   _______    ______    ______  $$ |____  $$/ $$ |$$/   _______  __    __ 
-#$$  \/$$/  /      \ /       \  /      \  /      \ $$      \ /  |$$ |/  | /       |/  |  /  |
-# $$  $$<  /$$$$$$  |$$$$$$$  |/$$$$$$  |/$$$$$$  |$$$$$$$  |$$ |$$ |$$ |/$$$$$$$/ $$ |  $$ |
-#  $$$$  \ $$    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |$$ |$$ |$$ |      $$ |  $$ |
-# $$ /$$  |$$$$$$$$/ $$ |  $$ |$$ \__$$ |$$ |__$$ |$$ |  $$ |$$ |$$ |$$ |$$ \_____ $$ \__$$ |
-#$$ |  $$ |$$       |$$ |  $$ |$$    $$/ $$    $$/ $$ |  $$ |$$ |$$ |$$ |$$       |$$    $$ |
-#$$/   $$/  $$$$$$$/ $$/   $$/  $$$$$$/  $$$$$$$/  $$/   $$/ $$/ $$/ $$/  $$$$$$$/  $$$$$$$ |
-#                                        $$ |                                      /  \__$$ |
-#                                        $$ |                                      $$    $$/ 
-#                                        $$/                                        $$$$$$/           
-*/        
-
+#  __    __                                          __        __  __  __                     
+# /  |  /  |                                        /  |      /  |/  |/  |                    
+# $$ |  $$ |  ______   _______    ______    ______  $$ |____  $$/ $$ |$$/   _______  __    __ 
+# $$  \/$$/  /      \ /       \  /      \  /      \ $$      \ /  |$$ |/  | /       |/  |  /  |
+#  $$  $$<  /$$$$$$  |$$$$$$$  |/$$$$$$  |/$$$$$$  |$$$$$$$  |$$ |$$ |$$ |/$$$$$$$/ $$ |  $$ |
+#   $$$$  \ $$    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |$$ |$$ |$$ |      $$ |  $$ |
+#  $$ /$$  |$$$$$$$$/ $$ |  $$ |$$ \__$$ |$$ |__$$ |$$ |  $$ |$$ |$$ |$$ |$$ \_____ $$ \__$$ |
+# $$ |  $$ |$$       |$$ |  $$ |$$    $$/ $$    $$/ $$ |  $$ |$$ |$$ |$$ |$$       |$$    $$ |
+# $$/   $$/  $$$$$$$/ $$/   $$/  $$$$$$/  $$$$$$$/  $$/   $$/ $$/ $$/ $$/  $$$$$$$/  $$$$$$$ |
+#                                         $$ |                                      /  \__$$ |
+#                                         $$ |                                      $$    $$/ 
+#                                         $$/                                        $$$$$$/
 
 namespace EZPing;
 
-use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
-use pocketmine\scheduler\PluginTask;
-use pocketmine\Server;
 use pocketmine\Player;
-
+use pocketmine\Server;
+use pocketmine\utils\Config;
+use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
- 
+use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase implements Listener {
-    //LOAD
+
+    private $config;
+
     public function onLoad(){
+        $this->saveDefaultConfig();
+        $this->config = new Config($this->getDataFolder()."config.yml", Config::YAML);
+        $this->config->getAll();
         $this->getLogger()->info("§eEZPing by §6Xenophilicy §eis loading...");
     }
-    //ENABLE
     public function onEnable(){
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info("§6EZPing§a has been enabled!");
     }
-    //DISABLE
     public function onDisable(){
         $this->getLogger()->info("§6EZPing§c has been disabled!");
     }
-    //COMMAND-SENT
+
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         if ($sender instanceof Player) {
             $player = $sender->getPlayer();
             switch($command->getName()){
-            case'/ping':
+            case'ping':
                 $iping = $sender->getPing();
-                if ($iping <= 50) {
+                if ($iping <= $this->config->getNested("Range_1.less_than") &&  $iping > $this->config->getNested("Range_1.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status:§b Excellent");
+                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_1.message"));
                 }
-                if ($iping > 50 && $iping <= 100) {
+                if ($iping <= $this->config->getNested("Range_2.less_than") &&  $iping > $this->config->getNested("Range_2.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status:§a Good");
+                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_2.message"));
                 }
-                if ($iping > 100 && $iping <= 200) {
+                if ($iping <= $this->config->getNested("Range_3.less_than") &&  $iping > $this->config->getNested("Range_3.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status:§e Ok");
+                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_3.message"));
                 }
-                if ($iping > 200 && $iping <= 500) {
+                if ($iping <= $this->config->getNested("Range_4.less_than") &&  $iping > $this->config->getNested("Range_4.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status:§c Poor");
+                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_4.message"));
                 }
-                if ($iping > 500) {
+                if ($iping <= $this->config->getNested("Range_25.less_than") &&  $iping > $this->config->getNested("Range_5.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status:§4 Extremely Poor");
+                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_5.message"));
                 }
                 break;
             case'ezping':
                 $sender->sendMessage("§7-=== §6EZPing §7===-");
                 $sender->sendMessage("§eAuthor: §aXenophillicy");
-                $sender->sendMessage("§eDescription: §aGet your ping by typing //ping");
+                $sender->sendMessage("§eDescription: §aFind your ping by typing /ping");
                 $sender->sendMessage("§7-====================-");
                 break;
             }
