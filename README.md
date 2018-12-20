@@ -5,12 +5,13 @@ You can find more info here on the wiki page: https://github.com/Xenophilicy/EZP
 ***
 ## Plugin Details
 * **API:** 3.0.0
-* **Version:** 1.0.0
-* **Basic Description:** Get your ping by typing //ping
+* **Version:** 1.2.0
+* **Basic Description:** Get your ping by typing /ping
 * _Very simple code for editing and debugging_
-* Use the command: _//ping_ to find your ping!
+* _Easy to use config file for great customization!_
+* Use the command: _/ping_ to find your ping!
 * Use the command: _/ezping_ to get info about the plugin!
-* Even tells you the quality of your ping is based on 5 ranges!
+* Even tells you the quality of your ping is based on custom 5 ranges!
 ***
 ## Dependencies
 None :)
