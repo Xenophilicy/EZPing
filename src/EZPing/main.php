@@ -63,7 +63,7 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage("§ePing: ".$iping."ms");
                     $sender->sendMessage("§5Status: ".$this->config->getNested("Range_4.message"));
                 }
-                if ($iping <= $this->config->getNested("Range_25.less_than") &&  $iping > $this->config->getNested("Range_5.greater_than")){
+                if ($iping <= $this->config->getNested("Range_5.less_than") &&  $iping > $this->config->getNested("Range_5.greater_than")){
                     $sender->sendMessage("§ePing: ".$iping."ms");
                     $sender->sendMessage("§5Status: ".$this->config->getNested("Range_5.message"));
                 }
