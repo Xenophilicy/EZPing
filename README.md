@@ -4,7 +4,7 @@ Enables you to check your ping with a very simple command!
 You can find more info here on the wiki page: https://github.com/Xenophilicy/EZPing/wiki
 ***
 ## Plugin Details
-* **API:** 3.0.0
+* **API:** 3.5.1
 * **Version:** 1.2.0
 * **Basic Description:** Get your ping by typing /ping
 * _Very simple code for editing and debugging_
