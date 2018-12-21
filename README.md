@@ -1,20 +1,28 @@
 # EZPing
-Enables you to check your ping with a very simple command!
+
+### Enables you to check your ping with a very simple command!!
+
+## Information
+With this plugin, I made it very simple for both the host, and the player to check their ping! All you do is type /ping and your ping in milliseconds will show and also a custom message set by the host in the config.yml file! Choose from five different ranges to set (Defaults are: Excellent, Good, Ok, Poor, Extremely Poor).
 
 You can find more info here on the wiki page: https://github.com/Xenophilicy/EZPing/wiki
+## Commands
+```diff
+/ping → Use to find your ping!
+/ezping → Get info about the plugin!
+```
 ***
-## Plugin Details
+
+## EZPing Details
 * **API:** 3.5.1
 * **Version:** 1.2.0
 * **Basic Description:** Get your ping by typing /ping
-* _Very simple code for editing and debugging_
-* _Easy to use config file for great customization!_
-* Use the command: _/ping_ to find your ping!
-* Use the command: _/ezping_ to get info about the plugin!
-* Even tells you the quality of your ping is based on custom 5 ranges!
+* *Easy to edit config.yml file*
+* *Simple code for editing and debugging*
 ***
+
 ## Dependencies
-None :)
-***
+**None :)**
+
 ## Credits
-My Discord Server for the ping ranges! *Invite Code: hNVehXe*
+*My Discord Server for the range defaults* ***Invite Code: hNVehXe***
