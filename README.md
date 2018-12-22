@@ -1,4 +1,4 @@
-# [![Xenophilicy](https://imgur.com/a/nqHQ5Pv)]()
+# [![Xenophilicy](https://i.imgur.com/Tk43fFJ.png)]()
 
 ## Information
 With this plugin, I made it very simple for both the host, and the player to check their ping! All you do is use the command '/ping' and your ping in the form of milliseconds will show and also a custom message indicating the overall quality of the connection set by the host in the config.yml file! Choose from five different ranges to set (Defaults are: Excellent, Good, Ok, Poor, Extremely Poor).
