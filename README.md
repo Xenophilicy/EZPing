@@ -12,7 +12,7 @@ You can find more info here on the [Wiki Page](https://github.com/Xenophilicy/EZ
 ***
 
 ## EZPing Details
-* **API:** 3.5.1
+* **API:** 3.5.0+
 * **Version:** 1.2.0
 * **Basic Description:** Get your ping by typing /ping
 * *Easy to edit config.yml file*
@@ -21,6 +21,8 @@ You can find more info here on the [Wiki Page](https://github.com/Xenophilicy/EZ
 
 ## Dependencies
 **None :)**
+
+**DevTools → https://github.com/pmmp/PocketMine-DevTools** *(If you are using the plugin folder method)*
 
 ## Credits
 * [Xenophilicy](https://github.com/Xenophilicy/)
