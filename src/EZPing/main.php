@@ -42,45 +42,102 @@ class Main extends PluginBase implements Listener {
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
-        if ($sender instanceof Player) {
-            $player = $sender->getPlayer();
-            switch($command->getName()){
+        $range1l = $this->config->getNested("Range_1.less_than");
+        $range1g = $this->config->getNested("Range_1.greater_than");
+        $msg1 = $this->config->getNested("Range_1.message");
+        $range2l = $this->config->getNested("Range_2.less_than");
+        $range2g = $this->config->getNested("Range_2.greater_than");
+        $msg2 = $this->config->getNested("Range_2.message");
+        $range3l = $this->config->getNested("Range_3.less_than");
+        $range3g = $this->config->getNested("Range_3.greater_than");
+        $msg3 = $this->config->getNested("Range_3.message");
+        $range4l = $this->config->getNested("Range_4.less_than");
+        $range4g = $this->config->getNested("Range_4.greater_than");
+        $msg4 = $this->config->getNested("Range_4.message");
+        $range5l = $this->config->getNested("Range_5.less_than");
+        $range5g = $this->config->getNested("Range_5.greater_than");
+        $msg5 = $this->config->getNested("Range_5.message");
+        switch($command->getName()){
             case'ping':
-                $iping = $sender->getPing();
-                if ($iping <= $this->config->getNested("Range_1.less_than") &&  $iping > $this->config->getNested("Range_1.greater_than")){
-                    $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_1.message"));
+                if(!isset($args[0])){
+                    if ($sender instanceof Player) {
+                        $iping = $sender->getPing();
+                        $pingMsg = "§eYour ping: ".$iping."ms";
+                        if ($iping <= $range1l &&  $iping > $range1g){
+                            $sender->sendMessage($pingMsg);
+                            $sender->sendMessage("§5Status: ".$msg1);
+                        }
+                        if ($iping <= $range2l &&  $iping > $range2g){
+                            $sender->sendMessage($pingMsg);
+                            $sender->sendMessage("§5Status: ".$msg2);
+                        }
+                        if ($iping <= $range3l &&  $iping > $range3g){
+                            $sender->sendMessage($pingMsg);
+                            $sender->sendMessage("§5Status: ".$msg3);
+                        }
+                        if ($iping <= $range4l &&  $iping > $range4g){
+                            $sender->sendMessage($pingMsg);
+                            $sender->sendMessage("§5Status: ".$msg4);
+                        }
+                        if ($iping <= $range5l &&  $iping > $range5g){
+                            $sender->sendMessage($pingMsg);
+                            $sender->sendMessage("§5Status: ".$msg5);
+                        }
+                    }
+                    else{
+                        $sender->sendMessage("§cYou cannot check the console's ping!");
+                        $sender->sendMessage("§cYou can use /ping <player> from console.");
+                    }
                 }
-                if ($iping <= $this->config->getNested("Range_2.less_than") &&  $iping > $this->config->getNested("Range_2.greater_than")){
-                    $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_2.message"));
-                }
-                if ($iping <= $this->config->getNested("Range_3.less_than") &&  $iping > $this->config->getNested("Range_3.greater_than")){
-                    $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_3.message"));
-                }
-                if ($iping <= $this->config->getNested("Range_4.less_than") &&  $iping > $this->config->getNested("Range_4.greater_than")){
-                    $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_4.message"));
-                }
-                if ($iping <= $this->config->getNested("Range_5.less_than") &&  $iping > $this->config->getNested("Range_5.greater_than")){
-                    $sender->sendMessage("§ePing: ".$iping."ms");
-                    $sender->sendMessage("§5Status: ".$this->config->getNested("Range_5.message"));
+                else{
+                    if($args[0] == "help" || $args[0] == null){
+                        $sender->sendMessage("§7-=== §6EZPing Help §7===-");
+                        $sender->sendMessage("§e/ezping - Shows info");
+                        $sender->sendMessage("§e/ping - Shows §oyour§r§e ping");
+                        $sender->sendMessage("§e/ping <player> - Shows §oother players'§r§e ping");
+                        $sender->sendMessage("§7-====================-");
+                    }
+                    else{
+                        $target = $this->getServer()->getPlayer($args[0]);
+                        if($target instanceof Player) {
+                            $iping = $target->getPing();
+                            $name = $target->getName();
+                            $pingMsg = "§o§e".$name."'s§r§e ping: ".$iping."ms";
+                            if ($iping <= $range1l &&  $iping > $range1g){
+                                $sender->sendMessage($pingMsg);
+                                $sender->sendMessage("§5Status: ".$msg1);
+                            }
+                            if ($iping <= $range2l &&  $iping > $range2g){
+                                $sender->sendMessage($pingMsg);
+                                $sender->sendMessage("§5Status: ".$msg2);
+                            }
+                            if ($iping <= $range3l &&  $iping > $range3g){
+                                $sender->sendMessage($pingMsg);
+                                $sender->sendMessage("§5Status: ".$msg3);
+                            }
+                            if ($iping <= $range4l &&  $iping > $range4g){
+                                $sender->sendMessage($pingMsg);
+                                $sender->sendMessage("§5Status: ".$msg4);
+                            }
+                            if ($iping <= $range5l &&  $iping > $range5g){
+                                $sender->sendMessage($pingMsg);
+                                $sender->sendMessage("§5Status: ".$msg5);
+                            }
+                        }
+                        else{
+                            $sender->sendMessage("§cPlayer is not online!");
+                        }
+                    }
                 }
                 break;
             case'ezping':
                 $sender->sendMessage("§7-=== §6EZPing §7===-");
                 $sender->sendMessage("§eAuthor: §aXenophillicy");
-                $sender->sendMessage("§eDescription: §aFind your ping by typing /ping");
+                $sender->sendMessage("§eDescription: §aGet your ping status");
                 $sender->sendMessage("§7-====================-");
                 break;
-            }
-            return true;
         }
-        else {
-            $sender->sendMessage("§cThis command only works in game.");
-            return true;
-        }
+        return true;
     }
 }
 ?>
