@@ -1,3 +1,7 @@
+# EZPing
+[![HitCount](http://hits.dwyl.io/Xenophilicy/EZPing.svg)](http://hits.dwyl.io/Xenophilicy/EZPing)
+![](https://img.shields.io/discord/490677165289897995.svg?style=flat-square)
+
 # [![Xenophilicy](https://i.imgur.com/J3mZTYS.png)]()
 
 ```diff
