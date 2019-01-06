@@ -13,7 +13,7 @@ You can find more info here on the [Wiki Page](https://github.com/Xenophilicy/EZ
 ## Commands
 ```diff
 /ping → Use to find your ping!
-/ping <palyer> → Use to find another player's ping!
+/ping <player-name> → Use to find another player's ping!
 /ezping → Get info about the plugin!
 ```
 ***
