@@ -1,9 +1,10 @@
 # [![Xenophilicy](https://i.imgur.com/Tk43fFJ.png)]()
 
 ```diff
-+ Updated Version To 1.3.0
++ Updated Version To 1.3.0/5
 + Added support for checking another player's ping
 + Condensed code
++ Quick Add: Permission to check other players' ping
 ```
 
 ## Information
@@ -19,7 +20,7 @@ You can find more info here on the [Wiki Page](https://github.com/Xenophilicy/EZ
 
 ## EZPing Details
 * **API:** 3.5.0+
-* **Version:** 1.3.0
+* **Version:** 1.3.5
 * **Basic Description:** Get your ping by typing /ping
 * *Easy to edit config.yml file*
 * *Simple code for editing and debugging*

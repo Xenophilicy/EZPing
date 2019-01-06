@@ -100,28 +100,34 @@ class Main extends PluginBase implements Listener {
                     else{
                         $target = $this->getServer()->getPlayer($args[0]);
                         if($target instanceof Player) {
-                            $iping = $target->getPing();
-                            $name = $target->getName();
-                            $pingMsg = "§o§e".$name."'s§r§e ping: ".$iping."ms";
-                            if ($iping <= $range1l &&  $iping > $range1g){
-                                $sender->sendMessage($pingMsg);
-                                $sender->sendMessage("§5Status: ".$msg1);
+                            if($sender->hasPermission("ezping.ping.others")){
+                                $iping = $target->getPing();
+                                $name = $target->getName();
+                                $pingMsg = "§o§e".$name."'s§r§e ping: ".$iping."ms";
+                                if ($iping <= $range1l &&  $iping > $range1g){
+                                    $sender->sendMessage($pingMsg);
+                                    $sender->sendMessage("§5Status: ".$msg1);
+                                }
+                                if ($iping <= $range2l &&  $iping > $range2g){
+                                    $sender->sendMessage($pingMsg);
+                                    $sender->sendMessage("§5Status: ".$msg2);
+                                }
+                                if ($iping <= $range3l &&  $iping > $range3g){
+                                    $sender->sendMessage($pingMsg);
+                                    $sender->sendMessage("§5Status: ".$msg3);
+                                }
+                                if ($iping <= $range4l &&  $iping > $range4g){
+                                    $sender->sendMessage($pingMsg);
+                                    $sender->sendMessage("§5Status: ".$msg4);
+                                }
+                                if ($iping <= $range5l &&  $iping > $range5g){
+                                    $sender->sendMessage($pingMsg);
+                                    $sender->sendMessage("§5Status: ".$msg5);
+                                }
                             }
-                            if ($iping <= $range2l &&  $iping > $range2g){
-                                $sender->sendMessage($pingMsg);
-                                $sender->sendMessage("§5Status: ".$msg2);
-                            }
-                            if ($iping <= $range3l &&  $iping > $range3g){
-                                $sender->sendMessage($pingMsg);
-                                $sender->sendMessage("§5Status: ".$msg3);
-                            }
-                            if ($iping <= $range4l &&  $iping > $range4g){
-                                $sender->sendMessage($pingMsg);
-                                $sender->sendMessage("§5Status: ".$msg4);
-                            }
-                            if ($iping <= $range5l &&  $iping > $range5g){
-                                $sender->sendMessage($pingMsg);
-                                $sender->sendMessage("§5Status: ".$msg5);
+                            else{
+                                $sender->sendMessage("§cYou don't have permission to check other player's ping!");
+                                $sender->sendMessage("§cUse '/ping help' for a list of commands.");
                             }
                         }
                         else{
